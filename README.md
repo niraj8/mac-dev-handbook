@@ -46,8 +46,26 @@ more than once is safe — it skips anything already installed.
 | oh-my-zsh + plugins | Autosuggestions, syntax highlighting, git aliases |
 | JetBrains Mono Nerd Font | Monospace font that includes icon glyphs |
 
-Everything it adds to your `~/.zshrc` sits between two marker comments, so you
-can read it, change it, or delete the whole block.
+## What it does to your shell config
+
+No dotfiles are copied from this repo. Your `~/.zshrc` stays yours, but the
+script does write to it in three ways — worth knowing before you run it:
+
+1. **oh-my-zsh's installer replaces `~/.zshrc`** with its own template. If you
+   already had one, it is moved to `~/.zshrc.pre-oh-my-zsh`, not deleted. On a
+   brand new Mac there is nothing there to lose.
+2. **The `plugins=(...)` line is rewritten** to
+   `plugins=(git macos zsh-autosuggestions zsh-syntax-highlighting)`.
+3. **A block is appended**, between `# >>> developer-handbook >>>` and
+   `# <<< developer-handbook <<<`, holding four `eval` lines (Homebrew, mise,
+   zoxide, fzf).
+
+It also writes `~/.config/ghostty/config` — but only if you do not already have
+one.
+
+Open `~/.zshrc` and read it. Every line above is plain text you can change or
+delete, and [Chapter 03](handbook/03-terminal-fluency.md) walks through what
+each one does.
 
 ## Then read the handbook
 
@@ -74,7 +92,11 @@ whichever chapter is solving a problem you actually have.
 
 ## Undoing it
 
-- Shell changes: delete the `>>> developer-handbook >>>` block from `~/.zshrc`
-- oh-my-zsh: `uninstall_oh_my_zsh`
+- The appended block: delete everything between the two
+  `developer-handbook` markers in `~/.zshrc`
+- The plugin list: edit the `plugins=(...)` line to whatever you want
+- oh-my-zsh entirely: `uninstall_oh_my_zsh` — it restores
+  `~/.zshrc.pre-oh-my-zsh` if you had one
+- Ghostty config: delete `~/.config/ghostty/config`
 - A package: `brew uninstall <name>` or `brew uninstall --cask <name>`
 - Everything Homebrew: see the uninstall script at https://brew.sh
