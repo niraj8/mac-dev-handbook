@@ -1,0 +1,80 @@
+# developer-handbook
+
+A new Mac, set up for development in about fifteen minutes — plus a handbook
+that explains what was installed and what to do next.
+
+Two parts, on purpose:
+
+- **`setup.sh`** installs only the boring, universal stuff. It asks you
+  nothing and it makes no choices you would want to make yourself.
+- **`handbook/`** covers everything with a taste component — your prompt, your
+  aliases, your extra apps, your Mac tweaks — one short chapter at a time.
+
+The point is that you end up with a machine you understand, not a machine
+somebody else configured for you.
+
+## Requirements
+
+- An Apple Silicon Mac (M1 or later)
+- macOS 14 or newer
+- Your Mac password, once, when Homebrew asks for it
+
+## Run it
+
+```bash
+git clone https://github.com/niraj8/developer-handbook.git
+cd developer-handbook
+./setup.sh
+```
+
+The first run may stop and ask you to install the Xcode Command Line Tools
+through a system dialog. Let it finish, then run `./setup.sh` again. Running it
+more than once is safe — it skips anything already installed.
+
+## What it installs
+
+| | |
+|---|---|
+| Homebrew | The package manager everything else comes from |
+| Ghostty | Terminal |
+| VS Code | Editor — the one most guides assume |
+| Zed | Editor — faster, fewer settings, try it once VS Code feels slow |
+| Google Chrome | Browser with the devtools most guides assume |
+| git, gh | Version control, and GitHub from the terminal |
+| mise | Installs language runtimes (Node, Python, …) per project |
+| ripgrep, fd, bat, eza, jq, tree, wget, htop, fzf, zoxide | Everyday command line tools |
+| oh-my-zsh + plugins | Autosuggestions, syntax highlighting, git aliases |
+| JetBrains Mono Nerd Font | Monospace font that includes icon glyphs |
+
+Everything it adds to your `~/.zshrc` sits between two marker comments, so you
+can read it, change it, or delete the whole block.
+
+## Then read the handbook
+
+Start at [`handbook/00-read-me-first.md`](handbook/00-read-me-first.md).
+
+Chapter 01 is not optional — your machine cannot talk to GitHub until you do
+it. Chapter 02 gets your own website live on the internet. After that, read
+whichever chapter is solving a problem you actually have.
+
+| | |
+|---|---|
+| [00](handbook/00-read-me-first.md) | What the script did, and what is left |
+| [01](handbook/01-machine-to-github.md) | Connect your machine to GitHub |
+| [02](handbook/02-ship-your-site.md) | Put your own site on the internet |
+| [03](handbook/03-terminal-fluency.md) | What zsh and oh-my-zsh actually are |
+| [04](handbook/04-aliases.md) | The aliases you already have, and writing your own |
+| [05](handbook/05-prompt.md) | Make your prompt useful |
+| [06](handbook/06-better-defaults.md) | The command line tools you skipped over |
+| [07](handbook/07-nicer-diffs.md) | Readable git diffs with delta |
+| [08](handbook/08-mac-tweaks.md) | macOS settings worth changing |
+| [09](handbook/09-runtimes.md) | What mise is, and why not "just install Node" |
+| [10](handbook/10-apps.md) | Raycast, Rectangle, 1Password |
+| [11](handbook/11-containers.md) | What Docker is, and when you need it |
+
+## Undoing it
+
+- Shell changes: delete the `>>> developer-handbook >>>` block from `~/.zshrc`
+- oh-my-zsh: `uninstall_oh_my_zsh`
+- A package: `brew uninstall <name>` or `brew uninstall --cask <name>`
+- Everything Homebrew: see the uninstall script at https://brew.sh
