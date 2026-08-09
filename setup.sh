@@ -35,26 +35,13 @@ if [[ "$(uname -m)" != "arm64" ]]; then
 fi
 
 # ---------------------------------------------------------------------------
-# 1. Xcode Command Line Tools
-#
-# Git, compilers, and the headers Homebrew needs. Apple ships these separately
-# from Xcode itself.
-# ---------------------------------------------------------------------------
-
-step "Xcode Command Line Tools"
-if xcode-select -p >/dev/null 2>&1; then
-  done_ "already installed"
-else
-  info "A system dialog will open. Click Install, wait for it to finish,"
-  info "then run this script again."
-  xcode-select --install || true
-  exit 0
-fi
-
-# ---------------------------------------------------------------------------
-# 2. Homebrew
+# 1. Homebrew
 #
 # The package manager for macOS. Almost everything below comes from it.
+#
+# No Xcode Command Line Tools step here on purpose. The README has you install
+# them first, and if you skipped that, Homebrew's own installer pulls them in
+# headlessly with `softwareupdate` before it does anything else.
 # ---------------------------------------------------------------------------
 
 step "Homebrew"
@@ -69,7 +56,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 done_ "$(brew --version | head -1)"
 
 # ---------------------------------------------------------------------------
-# 3. Command line tools
+# 2. Command line tools
 #
 # git      version control
 # gh       GitHub from the terminal (auth, repos, pull requests)
@@ -99,7 +86,7 @@ done
 done_ "command line tools ready"
 
 # ---------------------------------------------------------------------------
-# 4. Applications
+# 3. Applications
 #
 # ghostty                        terminal
 # visual-studio-code             editor, the one most guides assume
@@ -121,7 +108,7 @@ done
 done_ "applications ready"
 
 # ---------------------------------------------------------------------------
-# 5. Shell: oh-my-zsh and two plugins
+# 4. Shell: oh-my-zsh and two plugins
 #
 # zsh is already your shell on macOS. oh-my-zsh is a config framework on top
 # of it: it manages plugins and completions.
@@ -169,7 +156,7 @@ fi
 done_ "plugins enabled"
 
 # ---------------------------------------------------------------------------
-# 6. Shell config block
+# 5. Shell config block
 #
 # Everything this script adds to .zshrc lives between two markers, so it can
 # be updated or removed cleanly. Your own edits go outside the block.
@@ -205,7 +192,7 @@ EOF
 fi
 
 # ---------------------------------------------------------------------------
-# 7. Ghostty
+# 6. Ghostty
 #
 # A terminal config so text is legible and the icon glyphs render. Skipped if
 # you already have one.
@@ -229,7 +216,7 @@ EOF
 fi
 
 # ---------------------------------------------------------------------------
-# 8. Git defaults
+# 7. Git defaults
 #
 # Not your name and email. You will set those yourself in Chapter 01, because
 # you should know where they are and what they do.

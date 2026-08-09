@@ -21,15 +21,29 @@ somebody else configured for you.
 
 ## Run it
 
+Open **Terminal**: press `Cmd+Space`, type `terminal`, press Enter.
+
+Type each line below and press Enter after it.
+
+**1. Install Apple's developer tools.** A new Mac has no `git` until you do.
+
+```bash
+xcode-select --install
+```
+
+Click **Install** in the dialog, then wait for it to finish. If it says they are
+already installed, good — carry on.
+
+**2. Get this repo and run the setup.**
+
 ```bash
 git clone https://github.com/niraj8/mac-dev-handbook.git
 cd mac-dev-handbook
 ./setup.sh
 ```
 
-The first run may stop and ask you to install the Xcode Command Line Tools
-through a system dialog. Let it finish, then run `./setup.sh` again. Running it
-more than once is safe — it skips anything already installed.
+Ten to fifteen minutes. It asks for your Mac password once. Safe to run again
+later — it skips whatever you already have.
 
 ## What it installs
 
