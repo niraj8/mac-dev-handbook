@@ -1,4 +1,4 @@
-# developer-handbook
+# mac-dev-handbook
 
 A new Mac, set up for development in about fifteen minutes — plus a handbook
 that explains what was installed and what to do next.
@@ -22,8 +22,8 @@ somebody else configured for you.
 ## Run it
 
 ```bash
-git clone https://github.com/niraj8/developer-handbook.git
-cd developer-handbook
+git clone https://github.com/niraj8/mac-dev-handbook.git
+cd mac-dev-handbook
 ./setup.sh
 ```
 
@@ -56,8 +56,8 @@ script does write to it in three ways — worth knowing before you run it:
    brand new Mac there is nothing there to lose.
 2. **The `plugins=(...)` line is rewritten** to
    `plugins=(git macos zsh-autosuggestions zsh-syntax-highlighting)`.
-3. **A block is appended**, between `# >>> developer-handbook >>>` and
-   `# <<< developer-handbook <<<`, holding four `eval` lines (Homebrew, mise,
+3. **A block is appended**, between `# >>> mac-dev-handbook >>>` and
+   `# <<< mac-dev-handbook <<<`, holding four `eval` lines (Homebrew, mise,
    zoxide, fzf).
 
 It also writes `~/.config/ghostty/config` — but only if you do not already have
@@ -93,7 +93,7 @@ whichever chapter is solving a problem you actually have.
 ## Undoing it
 
 - The appended block: delete everything between the two
-  `developer-handbook` markers in `~/.zshrc`
+  `mac-dev-handbook` markers in `~/.zshrc`
 - The plugin list: edit the `plugins=(...)` line to whatever you want
 - oh-my-zsh entirely: `uninstall_oh_my_zsh` — it restores
   `~/.zshrc.pre-oh-my-zsh` if you had one

@@ -176,15 +176,15 @@ done_ "plugins enabled"
 # ---------------------------------------------------------------------------
 
 step "Shell configuration"
-MARKER_START="# >>> developer-handbook >>>"
-MARKER_END="# <<< developer-handbook <<<"
+MARKER_START="# >>> mac-dev-handbook >>>"
+MARKER_END="# <<< mac-dev-handbook <<<"
 
 if grep -qF "$MARKER_START" "$HOME/.zshrc"; then
   done_ "block already present in ~/.zshrc"
 else
   cat >>"$HOME/.zshrc" <<'EOF'
 
-# >>> developer-handbook >>>
+# >>> mac-dev-handbook >>>
 # Added by setup.sh. Edit freely, or delete the whole block to undo it.
 
 # Homebrew: puts brew and everything it installs on your PATH.
@@ -199,7 +199,7 @@ eval "$(zoxide init zsh)"
 
 # fzf: ctrl-r fuzzy-searches your command history, ctrl-t inserts a file path.
 source <(fzf --zsh)
-# <<< developer-handbook <<<
+# <<< mac-dev-handbook <<<
 EOF
   done_ "block added to ~/.zshrc"
 fi

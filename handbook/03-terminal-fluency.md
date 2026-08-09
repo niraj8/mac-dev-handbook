@@ -15,7 +15,7 @@ commands you found, rather than a place you work.
 - **What oh-my-zsh adds.** Not magic: a plugin loader, completion setup, and a
   theme system. Point at `~/.oh-my-zsh` and let them look inside.
 - **The startup file.** `~/.zshrc` runs on every new shell. The
-  `>>> developer-handbook >>>` block is just lines someone else typed. Read it
+  `>>> mac-dev-handbook >>>` block is just lines someone else typed. Read it
   line by line and explain each `eval`.
 - **The two plugins you already feel.** Autosuggestions (→ to accept, and how it
   reads `~/.zsh_history`); syntax highlighting (red before you hit enter =
